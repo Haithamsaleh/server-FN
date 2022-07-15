@@ -8,7 +8,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
+const roleRouter = require('./routers/route/role');
+app.use(roleRouter);
 
 
 const PORT = process.env.PORT ;
