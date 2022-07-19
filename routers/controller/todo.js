@@ -1,27 +1,25 @@
-const { models } = require("mongoose");
 const tasksModel = require("./../../db/models/todo")
 
 const createtask = (req, res) => {
 
-    const { task, userId, completeBy, importance } = req.body;
-    const newtask = new tasksModel({
+    const {task,userId,completeBy,importance} = req.body;
+    const newTask = new tasksModel({
 
-        userId:req.token.id,
         task: task,
+        userId: req.token.id,
         completeBy: completeBy,
         importance: importance,
 
     });
-    newtask
+    newTask
         .save()
         .then((result) => {
-            res.status(200).json(result);
+            res.status(201).json(result);
         })
         .catch((err) => {
             res.status(400).json(err);
         });
 }
-//stoped here because err Cannot read properties of undefined (reading 'id')
 const getTask = (req, res) => {
     console.log(id);
     tasksModel
@@ -64,10 +62,31 @@ const taskdone = (req, res) => {
             res.status(400).json(err);
         });
 };
+
+const deltask = (req, res) => {
+    const { id } = req.params;
+
+    console.log(id);
+    tasksModel
+        .findByIdAndRemove(id)
+        .exec()
+        .then((result) => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        });
+};
+
+
+
+
 module.exports = {
     createtask,
     getTask,
     deletedtaskByUser,
     taskdone,
+    deltask,
 
 };

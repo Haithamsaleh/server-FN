@@ -10,4 +10,4 @@ isdel: { type: Boolean, default: false},
 isdone: { type: Boolean, default: false},
 
 });
-mongoose.exports = mongoose.model("Tasks",tasks);
+module.exports = mongoose.model("Tasks",tasks);
