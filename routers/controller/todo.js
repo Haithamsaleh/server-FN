@@ -6,7 +6,7 @@ const createtask = (req, res) => {
     const newTask = new tasksModel({
 
         task: task,
-        userId: req.token.id,
+        // userId: req.token.id,
         completeBy: completeBy,
         importance: importance,
 
@@ -21,7 +21,6 @@ const createtask = (req, res) => {
         });
 }
 const getTask = (req, res) => {
-    console.log(id);
     tasksModel
         .find({isdel: false })
 
