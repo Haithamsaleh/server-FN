@@ -8,6 +8,6 @@ completeBy:{type: Date,},
 importance:{ type: String, required: true},
 isdel: { type: Boolean, default: false},
 isdone: { type: Boolean, default: false},
-
+staps: { type: Number, default: 0}
 });
 module.exports = mongoose.model("Tasks",tasks);
